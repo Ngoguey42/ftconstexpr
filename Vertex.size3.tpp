@@ -14,48 +14,56 @@ CONSTEXPR SPEC::Vertex() noexcept
 	: x()
 	, y()
 	, z()
-// {	return ;}
-{	std::cout << "Ctor[def]\n";}
+{	return ;}
+// {	std::cout << "Ctor[def]\n";}
 
 template <typename T>
 CONSTEXPR SPEC::Vertex(SPEC const &rhs) noexcept
 	: x(rhs.x)
 	, y(rhs.y)
 	, z(rhs.z)
-// {	return ;}
-{	std::cout << "Ctor[cpy]\n";}
+{	return ;}
+// {	std::cout << "Ctor[cpy]\n";}
 
 template <typename T>
 CONSTEXPR SPEC::Vertex(std::initializer_list<T> l) noexcept
 	: x(l.size() > 0 ? *(l.begin()    ) : SPEC::defValue)
 	, y(l.size() > 1 ? *(l.begin() + 1) : SPEC::defValue)
 	, z(l.size() > 2 ? *(l.begin() + 2) : SPEC::defValue)
-// {	return ;}
-{	std::cout << "Ctor[ilist]\n";}
+{	return ;}
+// {	std::cout << "Ctor[ilist]\n";}
 
 template <typename T>
-CONSTEXPR SPEC::Vertex(SPEC::AssortedTupple const &t) noexcept
+CONSTEXPR SPEC::Vertex(SPEC::AssortedTuple2 const &t) noexcept
+	: x(std::get<0>(t))
+	, y(std::get<1>(t))
+	, z()
+{	return ;}
+// {	std::cout << "Ctor[tuple2]\n";}
+
+template <typename T>
+CONSTEXPR SPEC::Vertex(SPEC::AssortedTuple3 const &t) noexcept
 	: x(std::get<0>(t))
 	, y(std::get<1>(t))
 	, z(std::get<2>(t))
-// {	return ;}
-{	std::cout << "Ctor[tuple3]\n";}
+{	return ;}
+// {	std::cout << "Ctor[tuple3]\n";}
 
 template <typename T>
 CONSTEXPR SPEC::Vertex(T x, T y) noexcept
 	: x(x)
 	, y(y)
 	, z()
-// {	return ;}
-{	std::cout << "Ctor[2T]\n";}
+{	return ;}
+// {	std::cout << "Ctor[2T]\n";}
 
 template <typename T>
 CONSTEXPR SPEC::Vertex(T x, T y, T z) noexcept
 	: x(x)
 	, y(y)
 	, z(z)
-// {	return ;}
-{	std::cout << "Ctor[3T]\n";}
+{	return ;}
+// {	std::cout << "Ctor[3T]\n";}
 
 // * MEMBER FUNCTIONS / METHODS ********************************************* //
 template <typename T>
@@ -86,7 +94,15 @@ CONSTEXPR SPEC		&SPEC::operator=(SPEC const &rhs) noexcept
 }
 
 template <typename T>
-CONSTEXPR SPEC		&SPEC::operator=(SPEC::AssortedTupple const &rhs) noexcept
+CONSTEXPR SPEC		&SPEC::operator=(SPEC::AssortedTuple2 const &rhs) noexcept
+{
+	this->x = std::get<0>(rhs);
+	this->y = std::get<1>(rhs);
+	return *this;
+}
+
+template <typename T>
+CONSTEXPR SPEC		&SPEC::operator=(SPEC::AssortedTuple3 const &rhs) noexcept
 {
 	this->x = std::get<0>(rhs);
 	this->y = std::get<1>(rhs);
@@ -130,7 +146,13 @@ DEFINE_OPERATOR(/)
 #undef DEFINE_OPERATOR
 
 template <typename T>
-CONSTEXPR SPEC::operator SPEC::AssortedTupple() const noexcept
+CONSTEXPR SPEC::operator SPEC::AssortedTuple2() const noexcept
+{
+	return std::make_pair(x, y);
+}
+
+template <typename T>
+CONSTEXPR SPEC::operator SPEC::AssortedTuple3() const noexcept
 {
 	return std::make_tuple(x, y, z);
 }

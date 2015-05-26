@@ -1,12 +1,12 @@
 
-#ifndef VERTEX_HPP
-# define VERTEX_HPP
+#ifndef FTCONSTEXPR_VERTEX_HPP
+# define FTCONSTEXPR_VERTEX_HPP
 
 # include <iostream>
 # include <tuple>
 
-// #define CONSTEXPR constexpr
-# define CONSTEXPR 
+#define CONSTEXPR constexpr
+// # define CONSTEXPR 
 
 template <typename T = float, size_t S = 3u>
 class Vertex;
@@ -14,4 +14,4 @@ class Vertex;
 # include "Vertex.size3.hpp"
 
 
-#endif // *************************************** VERTEX_HPP //
+#endif // ******************************************** FTCONSTEXPR_VERTEX_HPP //
