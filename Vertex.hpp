@@ -4,12 +4,20 @@
 
 # include <iostream>
 # include <tuple>
+# include <initializer_list>
+# include <type_traits>
 
 #define CONSTEXPR constexpr
 // # define CONSTEXPR 
 
 template <typename T = float, size_t S = 3u>
-class Vertex;
+class Vertex
+{
+	static_assert(std::is_arithmetic<T>::value,
+				  "ftce::Vertex type must be arithmetic");
+	static_assert(S == 2 || S == 3,
+				  "ftce::Vertex size must be 2 or 3(default)");
+};
 
 # include "Vertex.size3.hpp"
 

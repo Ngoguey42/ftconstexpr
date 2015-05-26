@@ -16,9 +16,9 @@ private:
 	typedef std::pair<T, T>				AssortedTuple2;
 public:
 	// * ATTRIBUTES ***************** //
-	float	x;
-	float	y;
-	float	z;
+	T						x;
+	T						y;
+	T						z;
 	
 	// ~Vertex(){std::cout << "Dtor\n";}
 	

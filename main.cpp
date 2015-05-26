@@ -19,14 +19,19 @@
 #define ENDL	std::cout << "\n";
 #define KEYWORD 
 #endif
+
+#define VALUE_TYPE float
+#define TYPE Vertex<VALUE_TYPE, 3u>
+
+
 KEYWORD int	testc(void)
 {
 	{
-		Vertex<>	v;
+		TYPE	v;
 	}
 	{
-		Vertex<>		v{1.f, 2.f, 3.f};
-		Vertex<> const	v2{4.f, 5.f, 6.f};
+		TYPE		v{1.f, 2.f, 3.f};
+		TYPE const	v2{4.f, 5.f, 6.f};
 		
 		SHOW(v) SHOW(v2)
 		DO_AND_PRINT(v[0] = v[1];)
@@ -36,7 +41,7 @@ KEYWORD int	testc(void)
 	}
 	ENDL
 	{
-		Vertex<>	v{10.f, 20.f};
+		TYPE	v{10.f, 20.f};
 		
 		SHOW(v) 
 		DO_AND_PRINT(v.set(100.f, 200.f, 300.f);)
@@ -46,8 +51,8 @@ KEYWORD int	testc(void)
 	}
 	ENDL
 	{
-		Vertex<>	v1{60.f, 40.f, 20.f};
-		Vertex<>	v2(v1);
+		TYPE	v1{60.f, 40.f, 20.f};
+		TYPE	v2(v1);
 		
 		DO_AND_PRINT(v1.set(1000.f, 2000.f);)
 		SHOW(v1) SHOW(v2)
@@ -60,13 +65,13 @@ KEYWORD int	testc(void)
 	}
 	ENDL
 	{
-		Vertex<>	v1{60.f, 40.f, 20.f};
-		std::tuple<float, float, float>	t0(v1);
-		std::tuple<float, float, float>	t1 = static_cast<decltype(t1)>(v1);
+		TYPE	v1{60.f, 40.f, 20.f};
+		std::tuple<VALUE_TYPE, VALUE_TYPE, VALUE_TYPE>	t0(v1);
+		std::tuple<VALUE_TYPE, VALUE_TYPE, VALUE_TYPE>	t1 = static_cast<decltype(t1)>(v1);
 		
-		Vertex<>	v2(t1);
-		Vertex<>	v3{t1};
-		Vertex<>	v4 = t1;
+		TYPE	v2(t1);
+		TYPE	v3{t1};
+		TYPE	v4 = t1;
 		(void)v4;
 		
 		DO_AND_PRINT(v2.set(42.f, 0.42f, 0.0042f);)
@@ -76,13 +81,13 @@ KEYWORD int	testc(void)
 	}
 	ENDL
 	{
-		Vertex<>	v1{60.f, 40.f};
-		std::pair<float, float>	t0(v1);
-		std::pair<float, float>	t1 = static_cast<decltype(t1)>(v1);
+		TYPE	v1{60.f, 40.f};
+		std::pair<VALUE_TYPE, VALUE_TYPE>	t0(v1);
+		std::pair<VALUE_TYPE, VALUE_TYPE>	t1 = static_cast<decltype(t1)>(v1);
 		
-		Vertex<>	v2(t1);
-		Vertex<>	v3{t1};
-		Vertex<>	v4 = t1;
+		TYPE	v2(t1);
+		TYPE	v3{t1};
+		TYPE	v4 = t1;
 		(void)v4;
 		
 		DO_AND_PRINT(v2.set(42.f, 0.42f);)
@@ -92,9 +97,9 @@ KEYWORD int	testc(void)
 	}
 	return (0);
 }
-
 int		main(void)
 {
+	std::cout << "sizeof type: " << sizeof(TYPE) << "bytes\n";
 	KEYWORD int ti = testc();
 	(void)ti;
 	std::cout << "OK\n";
