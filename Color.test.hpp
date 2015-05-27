@@ -22,8 +22,8 @@
 #  define KEYWORD 
 # endif
 
-# define VALUE_TYPE float
-# define TYPE Color<VALUE_TYPE, 1>
+# define VALUE_TYPE unsigned char
+# define TYPE Color<unsigned char, 255>
 
 static KEYWORD int	testcColor(void)
 {
@@ -52,10 +52,10 @@ static KEYWORD int	testcColor(void)
 	}
 	ENDL
 	{
-		TYPE	v1{0.5, 40, 20};
+		TYPE	v1{5, 5, 5};
 		TYPE	v2(v1);
 		
-		DO_AND_PRINT(v1.set(0.1, 250, 100);)
+		DO_AND_PRINT(v1.set(1, 2, 2);)
 		SHOW(v1) SHOW(v2)
 		DO_AND_PRINT(v1 = v2;)
 		SHOW(v1) SHOW(v2)
@@ -66,7 +66,7 @@ static KEYWORD int	testcColor(void)
 	}
 	ENDL
 	{
-		TYPE	v1{0.2, 40, 20};
+		TYPE	v1{2, 40, 20};
 		std::tuple<VALUE_TYPE, VALUE_TYPE, VALUE_TYPE>	t0(v1);
 		std::tuple<VALUE_TYPE, VALUE_TYPE, VALUE_TYPE>	t1 = static_cast<decltype(t1)>(v1);
 		
@@ -75,7 +75,7 @@ static KEYWORD int	testcColor(void)
 		TYPE	v4 = t1;
 		(void)v4;
 		
-		DO_AND_PRINT(v2.set(0.5f, 50, 50);)
+		DO_AND_PRINT(v2.set(5, 50, 50);)
 		SHOW(v2)
 		DO_AND_PRINT(v2 = t0;)
 		SHOW(v2)

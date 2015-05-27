@@ -36,7 +36,6 @@ public:
 	CONSTEXPR Color(std::initializer_list<T> l) noexcept;
 	CONSTEXPR Color(AssortedTuple3 const &t) noexcept;
 	CONSTEXPR Color(T x, T y, T z) noexcept;
-	virtual ~Color() = default;
 	
 	// * MEMBER FUNCTIONS / METHODS * //
 	CONSTEXPR Color			&set(T x, T y, T z) noexcept;

@@ -28,7 +28,6 @@ public:
 	CONSTEXPR Vertex(AssortedTuple3 const &t) noexcept;
 	CONSTEXPR Vertex(T x, T y) noexcept;
 	CONSTEXPR Vertex(T x, T y, T z) noexcept;
-	virtual ~Vertex() = default;
 	
 	// * MEMBER FUNCTIONS / METHODS * //
 	CONSTEXPR Vertex		&set(T x, T y) noexcept;
