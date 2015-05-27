@@ -145,6 +145,44 @@ CONSTEXPR SPEC		&SPEC::operator CAT_EQ_OP(OP)(SPEC const &rhs) noexcept \
 }																			\
 																			\
 template <typename T, unsigned int MAXVAL>									\
+CONSTEXPR SPEC		&SPEC::operator CAT_EQ_OP(OP)(T v) noexcept				\
+{																			\
+	if (std::is_floating_point<T>::value)									\
+	{																		\
+		r = BOUND_FN(this->r OP v);											\
+		g = BOUND_FN(this->g OP v);											\
+		b = BOUND_FN(this->b OP v);											\
+	}																		\
+	else																	\
+	{																		\
+		r = static_cast<T>(BOUND_FN(static_cast<float>(this->r) OP			\
+									static_cast<float>(v)));				\
+		g = static_cast<T>(BOUND_FN(static_cast<float>(this->g) OP			\
+									static_cast<float>(v)));				\
+		b = static_cast<T>(BOUND_FN(static_cast<float>(this->b) OP			\
+									static_cast<float>(v)));				\
+	}																		\
+	return *this;															\
+}																			\
+																			\
+template <typename T, unsigned int MAXVAL>									\
+CONSTEXPR SPEC		SPEC::operator OP(SPEC const &rhs) const noexcept		\
+{																			\
+	if (std::is_floating_point<T>::value)									\
+		return SPEC(BOUND_FN(this->r OP rhs.r),								\
+					BOUND_FN(this->g OP rhs.g),								\
+					BOUND_FN(this->b OP rhs.b));							\
+	else																	\
+		return SPEC(														\
+			static_cast<T>(BOUND_FN(static_cast<float>(this->r) OP			\
+									static_cast<float>(rhs.r))),			\
+			static_cast<T>(BOUND_FN(static_cast<float>(this->g) OP			\
+									static_cast<float>(rhs.g))),			\
+			static_cast<T>(BOUND_FN(static_cast<float>(this->b) OP			\
+									static_cast<float>(rhs.b))));			\
+}																			\
+																			\
+template <typename T, unsigned int MAXVAL>									\
 CONSTEXPR SPEC		SPEC::operator OP(T v) const noexcept					\
 {																			\
 	if (std::is_floating_point<T>::value)									\

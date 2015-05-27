@@ -31,11 +31,11 @@ constexpr Point		createPoint(void)
 
 int main(void)
 {
-	constexpr Point		p(createPoint());
-	(void)p;
+	// constexpr Point		p(createPoint());
+	// (void)p;
 	
-	std::cout << p.v << p.c << "\n";
+	// std::cout << p.v << p.c << "\n";
 	// testVertex();
-	// testColor();
+	testColor();
 	return (0);
 }

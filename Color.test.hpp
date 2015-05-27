@@ -3,7 +3,7 @@
 # define FTCONSTEXPR_COLOR_TEST_HPP
 
 # include "Color.hpp"
-
+# include <assert.h>
 // # define DO_CONSTEXPR constexpr
 
 # ifdef DO_CONSTEXPR //don't touch
@@ -11,7 +11,7 @@
 #  define SHOW(V)	
 #  define ENDL
 #  define KEYWORD constexpr
-
+#  define P(VAL)
 # else
 	
 #  define DO_AND_PRINT(ARG)												\
@@ -20,65 +20,111 @@
 #  define SHOW(V)	std::cout << #V << ": " << V << "\n";
 #  define ENDL	std::cout << "\n";
 #  define KEYWORD 
+#  define P(VAL) std::cout << VAL
 # endif
 
 # define VALUE_TYPE unsigned char
 # define TYPE Color<unsigned char, 255>
+# define TUPLET std::tuple<VALUE_TYPE, VALUE_TYPE, VALUE_TYPE>
 
 static KEYWORD int	testcColor(void)
 {
 	{
-		TYPE	v;
+		P("default CTOR: ");
+		TYPE const		v0;
+		P("OK\n");
+		P("values CTOR: ");
+		TYPE const		v1(10, 20, 30);
+		assert(v1.r == 10 && v1.g == 20 && v1.b == 30);
+		P("OK\n");
+		P("ilist CTOR: ");
+		TYPE const 		v2{40, 50, 60};
+		assert(v2.r == 40 && v2.g == 50 && v2.b == 60);
+		P("OK\n");
+		P("copy CTOR: ");
+		TYPE const		v3(v1);
+		assert(v3.r == 10 && v3.g == 20 && v3.b == 30);
+		P("OK\n");
+		P("tuple CTOR: ");
+		TYPE const		v4(std::make_tuple(70, 80, 90));
+		assert(v4.r == 70 && v4.g == 80 && v4.b == 90);
+		P("OK\n");
 	}
 	{
-		TYPE		v{1, 2, 3};
-		TYPE const	v2{4, 5, 6};
-		
-		SHOW(v) SHOW(v2)
-		DO_AND_PRINT(v[0] = v[1];)
-		SHOW(v) SHOW(v2)
-		DO_AND_PRINT(v[0] = v[1] * v2[2];)
-		SHOW(v) SHOW(v2)
-	}
-	ENDL
-	{
+		P("setter: ");
 		TYPE	v{10, 20, 42};
-		
-		SHOW(v) 
-		DO_AND_PRINT(v.set(100, 200, 250);)
-		SHOW(v) 
-		DO_AND_PRINT(v.set(250, 250, 100);)
-		SHOW(v) 
+		v.set(100, 200, 250);
+		assert(v.r == 100 && v.g == 200 && v.b == 250);
+		P("OK\n");
 	}
-	ENDL
 	{
-		TYPE	v1{5, 5, 5};
-		TYPE	v2(v1);
-		
-		DO_AND_PRINT(v1.set(1, 2, 2);)
-		SHOW(v1) SHOW(v2)
-		DO_AND_PRINT(v1 = v2;)
-		SHOW(v1) SHOW(v2)
-		DO_AND_PRINT(v1 *= v2;)
-		SHOW(v1) SHOW(v2)
-		DO_AND_PRINT(v2 = ((((v1 + 1) - 2) * 3) / 4);)
-		SHOW(v1) SHOW(v2)
+		TYPE			v1{100, 200, 250};
+		TYPE const		v2(10, 20, 30);
+		TUPLET			t1(10, 20, 30);
+		P("operator =(color): ");
+		v1 = v2;
+		assert(v1.r == 10 && v1.g == 20 && v1.b == 30);
+		P("OK\n");
+		v1.set(0, 0, 0);
+		P("operator =(tuple): ");
+		v1 = t1;
+		assert(v1.r == 10 && v1.g == 20 && v1.b == 30);
+		P("OK\n");
+		P("operator []: ");
+		assert(v1[0] == 10 && v1[1] == 20 && v1[2] == 30);
+		P("OK\n");
+		P("operator []const: ");
+		assert(v2[0] == 10 && v2[1] == 20 && v2[2] == 30);
+		P("OK\n");
+		v1.set(100, 200, 250);
+		P("operator typecast(tuple): ");
+		t1 = static_cast<TUPLET>(v1);
+		assert(std::get<0>(t1) == 100 && std::get<1>(t1) == 200 && std::get<2>(t1) == 250);
+		P("OK\n");
 	}
-	ENDL
 	{
-		TYPE	v1{2, 40, 20};
-		std::tuple<VALUE_TYPE, VALUE_TYPE, VALUE_TYPE>	t0(v1);
-		std::tuple<VALUE_TYPE, VALUE_TYPE, VALUE_TYPE>	t1 = static_cast<decltype(t1)>(v1);
-		
-		TYPE	v2(t1);
-		TYPE	v3{t1};
-		TYPE	v4 = t1;
-		(void)v4;
-		
-		DO_AND_PRINT(v2.set(5, 50, 50);)
-		SHOW(v2)
-		DO_AND_PRINT(v2 = t0;)
-		SHOW(v2)
+		VALUE_TYPE	v1 = 1;
+		TYPE	v2{2, 2, 2};
+
+		P("operator +=(color): ");
+		v2 += v2;
+		assert(v2.r == 4 && v2.g == 4 && v2.b == 4);
+		P("OK\n");
+		P("operator -=(color): ");
+		v2 -= v1;
+		assert(v2.r == 3 && v2.g == 3 && v2.b == 3);
+		P("OK\n");
+		P("operator *=(color): ");
+		v2 *= v2;
+		assert(v2.r == 9 && v2.g == 9 && v2.b == 9);
+		P("OK\n");
+		v1 = 2;
+		P("operator /=(color): ");
+		v2 /= v1;
+		assert(v2.r == 4 && v2.g == 4 && v2.b == 4);
+		P("OK\n");
+	}
+	{
+		TYPE	v1{1, 1, 1};
+		TYPE	v2{2, 2, 2};
+
+		P("operator +=(val): ");
+		v2 += v2;
+		assert(v2.r == 4 && v2.g == 4 && v2.b == 4);
+		P("OK\n");
+		P("operator -=(val): ");
+		v2 -= v1;
+		assert(v2.r == 3 && v2.g == 3 && v2.b == 3);
+		P("OK\n");
+		P("operator *=(val): ");
+		v2 *= v2;
+		assert(v2.r == 9 && v2.g == 9 && v2.b == 9);
+		P("OK\n");
+		v1.set(2, 2, 2);
+		P("operator /=(val): ");
+		v2 /= v1;
+		assert(v2.r == 4 && v2.g == 4 && v2.b == 4);
+		P("OK\n");
 	}
 	ENDL
 	return (0);
@@ -107,5 +153,6 @@ void		testColor(void)
 # undef KEYWORD
 # undef VALUE_TYPE
 # undef TYPE
+# undef P
 
 #endif

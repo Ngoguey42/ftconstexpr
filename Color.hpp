@@ -47,6 +47,8 @@ public:
 	CONSTEXPR T const		&operator[](size_t i) const noexcept;
 # define DECLARE_OPERATOR(OP)												\
 	CONSTEXPR Color		&operator CAT_EQ_OP(OP)(Color const &rhs) noexcept;	\
+	CONSTEXPR Color		&operator CAT_EQ_OP(OP)(T v) noexcept;				\
+	CONSTEXPR Color		operator OP(Color const &rhs) const noexcept;		\
 	CONSTEXPR Color		operator OP(T v) const noexcept;
 	DECLARE_OPERATOR(+)
 	DECLARE_OPERATOR(-)
