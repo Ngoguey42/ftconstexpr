@@ -21,6 +21,7 @@ class Vertex
 };
 
 # include "Vertex.size3.hpp"
+# include "Vertex.size2.hpp"
 # undef CONSTEXPR
 
 #endif // ******************************************** FTCONSTEXPR_VERTEX_HPP //
