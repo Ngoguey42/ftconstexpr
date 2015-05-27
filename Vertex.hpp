@@ -6,6 +6,7 @@
 # include <tuple>
 # include <initializer_list>
 # include <type_traits>
+# include <stdexcept>
 
 #define CONSTEXPR constexpr
 // # define CONSTEXPR 
@@ -20,6 +21,6 @@ class Vertex
 };
 
 # include "Vertex.size3.hpp"
-
+# undef CONSTEXPR
 
 #endif // ******************************************** FTCONSTEXPR_VERTEX_HPP //

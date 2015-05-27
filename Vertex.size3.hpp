@@ -20,8 +20,6 @@ public:
 	T						y;
 	T						z;
 	
-	// ~Vertex(){std::cout << "Dtor\n";}
-	
 	// * CTORS / DTORS ************** //
 	CONSTEXPR Vertex() noexcept;
 	CONSTEXPR Vertex(Vertex const &rhs) noexcept;
@@ -30,6 +28,7 @@ public:
 	CONSTEXPR Vertex(AssortedTuple3 const &t) noexcept;
 	CONSTEXPR Vertex(T x, T y) noexcept;
 	CONSTEXPR Vertex(T x, T y, T z) noexcept;
+	virtual ~Vertex() = default;
 	
 	// * MEMBER FUNCTIONS / METHODS * //
 	CONSTEXPR Vertex		&set(T x, T y) noexcept;
