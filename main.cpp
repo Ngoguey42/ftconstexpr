@@ -6,6 +6,11 @@
 #include "Color.hpp"
 #include "Color.test.hpp"
 
+#include "VtsColor.hpp"
+#include "VtsColor.test.hpp"
+
+
+
 class Point
 {
 public:
@@ -36,6 +41,7 @@ int main(void)
 	
 	// std::cout << p.v << p.c << "\n";
 	// testVertex();
-	testColor();
+	// testColor();
+	testVtsColor();
 	return (0);
 }

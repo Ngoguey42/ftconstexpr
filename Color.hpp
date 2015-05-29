@@ -19,7 +19,9 @@ template <typename T = unsigned char,
 class Color
 {
 	static_assert(std::is_arithmetic<T>::value,
-				  "ftce::Color type must be arithmetic");
+				  "ftce::Color 'T' must be arithmetic"); 
+	static_assert(MAXVAL > 0,
+				  "ftce::Color 'unsigned int MAXVAL' must be above 0."); 
 private:
 	// * NESTED OBJECTS ************* //
 	typedef T							Color::*AttributePointer;
@@ -30,10 +32,10 @@ public:
 	CONSTEXPR Color(Color const &rhs) noexcept;
 	CONSTEXPR Color(std::initializer_list<T> l) noexcept;
 	CONSTEXPR Color(AssortedTuple3 const &t) noexcept;
-	CONSTEXPR Color(T x, T y, T z) noexcept;
+	CONSTEXPR Color(T r, T g, T b) noexcept;
 	
 	// * MEMBER FUNCTIONS / METHODS * //
-	CONSTEXPR Color			&set(T x, T y, T z) noexcept;
+	CONSTEXPR Color			&set(T r, T g, T b) noexcept;
 	
 	// * OPERATORS ****************** //
 	CONSTEXPR Color			&operator=(Color const &rhs) noexcept;
