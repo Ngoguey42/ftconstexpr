@@ -25,11 +25,6 @@ private:
 	typedef T							Color::*AttributePointer;
 	typedef std::tuple<T, T, T>			AssortedTuple3;
 public:
-	// * ATTRIBUTES ***************** //
-	T						r;
-	T						g;
-	T						b;
-	
 	// * CTORS / DTORS ************** //
 	CONSTEXPR Color() noexcept;
 	CONSTEXPR Color(Color const &rhs) noexcept;
@@ -57,6 +52,11 @@ public:
 # undef DECLARE_OPERATOR
 	CONSTEXPR explicit operator AssortedTuple3() const noexcept;
 private:
+	// * ATTRIBUTES ***************** //
+	T						r;
+	T						g;
+	T						b;
+	
 	// * STATICS ******************** //
 	static constexpr T					defValue{static_cast<T>(0)};
 	static constexpr T					minval{static_cast<T>(0)};

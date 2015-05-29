@@ -35,26 +35,26 @@ static KEYWORD int	testcColor(void)
 		P("OK\n");
 		P("values CTOR: ");
 		TYPE const		v1(10, 20, 30);
-		assert(v1.r == 10 && v1.g == 20 && v1.b == 30);
+		assert(v1[0] == 10 && v1[1] == 20 && v1[2] == 30);
 		P("OK\n");
 		P("ilist CTOR: ");
 		TYPE const 		v2{40, 50, 60};
-		assert(v2.r == 40 && v2.g == 50 && v2.b == 60);
+		assert(v2[0] == 40 && v2[1] == 50 && v2[2] == 60);
 		P("OK\n");
 		P("copy CTOR: ");
 		TYPE const		v3(v1);
-		assert(v3.r == 10 && v3.g == 20 && v3.b == 30);
+		assert(v3[0] == 10 && v3[1] == 20 && v3[2] == 30);
 		P("OK\n");
 		P("tuple CTOR: ");
 		TYPE const		v4(std::make_tuple(70, 80, 90));
-		assert(v4.r == 70 && v4.g == 80 && v4.b == 90);
+		assert(v4[0] == 70 && v4[1] == 80 && v4[2] == 90);
 		P("OK\n");
 	}
 	{
 		P("setter: ");
 		TYPE	v{10, 20, 42};
 		v.set(100, 200, 250);
-		assert(v.r == 100 && v.g == 200 && v.b == 250);
+		assert(v[0] == 100 && v[1] == 200 && v[2] == 250);
 		P("OK\n");
 	}
 	{
@@ -63,12 +63,12 @@ static KEYWORD int	testcColor(void)
 		TUPLET			t1(10, 20, 30);
 		P("operator =(color): ");
 		v1 = v2;
-		assert(v1.r == 10 && v1.g == 20 && v1.b == 30);
+		assert(v1[0] == 10 && v1[1] == 20 && v1[2] == 30);
 		P("OK\n");
 		v1.set(0, 0, 0);
 		P("operator =(tuple): ");
 		v1 = t1;
-		assert(v1.r == 10 && v1.g == 20 && v1.b == 30);
+		assert(v1[0] == 10 && v1[1] == 20 && v1[2] == 30);
 		P("OK\n");
 		P("operator []: ");
 		assert(v1[0] == 10 && v1[1] == 20 && v1[2] == 30);
@@ -88,20 +88,20 @@ static KEYWORD int	testcColor(void)
 
 		P("operator +=(color): ");
 		v2 += v2;
-		assert(v2.r == 4 && v2.g == 4 && v2.b == 4);
+		assert(v2[0] == 4 && v2[1] == 4 && v2[2] == 4);
 		P("OK\n");
 		P("operator -=(color): ");
 		v2 -= v1;
-		assert(v2.r == 3 && v2.g == 3 && v2.b == 3);
+		assert(v2[0] == 3 && v2[1] == 3 && v2[2] == 3);
 		P("OK\n");
 		P("operator *=(color): ");
 		v2 *= v2;
-		assert(v2.r == 9 && v2.g == 9 && v2.b == 9);
+		assert(v2[0] == 9 && v2[1] == 9 && v2[2] == 9);
 		P("OK\n");
 		v1 = 2;
 		P("operator /=(color): ");
 		v2 /= v1;
-		assert(v2.r == 4 && v2.g == 4 && v2.b == 4);
+		assert(v2[0] == 4 && v2[1] == 4 && v2[2] == 4);
 		P("OK\n");
 	}
 	{
@@ -110,20 +110,20 @@ static KEYWORD int	testcColor(void)
 
 		P("operator +=(val): ");
 		v2 += v2;
-		assert(v2.r == 4 && v2.g == 4 && v2.b == 4);
+		assert(v2[0] == 4 && v2[1] == 4 && v2[2] == 4);
 		P("OK\n");
 		P("operator -=(val): ");
 		v2 -= v1;
-		assert(v2.r == 3 && v2.g == 3 && v2.b == 3);
+		assert(v2[0] == 3 && v2[1] == 3 && v2[2] == 3);
 		P("OK\n");
 		P("operator *=(val): ");
 		v2 *= v2;
-		assert(v2.r == 9 && v2.g == 9 && v2.b == 9);
+		assert(v2[0] == 9 && v2[1] == 9 && v2[2] == 9);
 		P("OK\n");
 		v1.set(2, 2, 2);
 		P("operator /=(val): ");
 		v2 /= v1;
-		assert(v2.r == 4 && v2.g == 4 && v2.b == 4);
+		assert(v2[0] == 4 && v2[1] == 4 && v2[2] == 4);
 		P("OK\n");
 	}
 	ENDL
