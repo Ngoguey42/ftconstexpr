@@ -27,7 +27,7 @@ namespace ftce
 # endif
 
 # define VALUE_TYPE unsigned char
-# define TYPE Color<unsigned char, 255>
+# define TYPE Color<unsigned char>
 # define TUPLET std::tuple<VALUE_TYPE, VALUE_TYPE, VALUE_TYPE>
 
 static KEYWORD int	testcColor(void)

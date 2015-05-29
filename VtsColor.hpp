@@ -17,10 +17,7 @@ namespace ftce
 // # define CONSTEXPR 
 
 template <size_t NVts, typename TVts = float, size_t SVts = 3u,
-		  typename Tco = unsigned char,
-		  unsigned int MAXVALco = std::is_floating_point<Tco>::value
-		  ? 1u
-		  : 255u>
+		  typename Tco = unsigned char>
 class VtsColor
 {
 	static_assert(NVts > 0,
@@ -31,15 +28,13 @@ class VtsColor
 				  "ftce::VtsColor 'size_t SVts = 3u' must be 2 or 3(default)");
 	static_assert(std::is_arithmetic<Tco>::value,
 				  "ftce::Color 'Tco' must be arithmetic"); 
-	static_assert(MAXVALco > 0,
-				  "ftce::Color 'unsigned int MAXVALco' must be above 0.");
 private:
 	// * NESTED OBJECTS ************* //
 	
 public:
 	// * NESTED OBJECTS ************* //
 	typedef ftce::Vertex<TVts, SVts>			Vertex;
-	typedef ftce::Color<Tco, MAXVALco>			Color;
+	typedef ftce::Color<Tco>			Color;
 
 	// * ATTRIBUTES ***************** //
 	Color											c;

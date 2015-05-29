@@ -1,3 +1,14 @@
+// ************************************************************************** //
+//                                                                            //
+//                                                        :::      ::::::::   //
+//   Color.hpp                                          :+:      :+:    :+:   //
+//                                                    +:+ +:+         +:+     //
+//   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
+//                                                +#+#+#+#+#+   +#+           //
+//   Created: 2015/05/29 13:44:41 by ngoguey           #+#    #+#             //
+//   Updated: 2015/05/29 14:54:31 by ngoguey          ###   ########.fr       //
+//                                                                            //
+// ************************************************************************** //
 
 #ifndef FTCONSTEXPR_TEST_HPP
 # define FTCONSTEXPR_TEST_HPP
@@ -10,26 +21,25 @@
 
 namespace ftce
 {
-
 # define CONSTEXPR constexpr
 // # define CONSTEXPR 
 # define CAT_EQ_OP(OP) OP ## =
 
-template <typename T = unsigned char,
-		  unsigned int MAXVAL = std::is_floating_point<T>::value
-		  ? 1u
-		  : 255u>
+template <typename T = unsigned char>
 class Color
 {
 	static_assert(std::is_arithmetic<T>::value,
 				  "ftce::Color 'T' must be arithmetic"); 
-	static_assert(MAXVAL > 0,
-				  "ftce::Color 'unsigned int MAXVAL' must be above 0."); 
 private:
 	// * NESTED OBJECTS ************* //
 	typedef T							Color::*AttributePointer;
 	typedef std::tuple<T, T, T>			AssortedTuple3;
 public:
+	// * ATTRIBUTES ***************** //
+	T						r;
+	T						g;
+	T						b;
+	
 	// * CTORS / DTORS ************** //
 	CONSTEXPR Color() noexcept;
 	CONSTEXPR Color(Color const &rhs) noexcept;
@@ -38,49 +48,43 @@ public:
 	CONSTEXPR Color(T r, T g, T b) noexcept;
 	
 	// * MEMBER FUNCTIONS / METHODS * //
-	CONSTEXPR Color			&set(T r, T g, T b) noexcept;
+	CONSTEXPR Color		&set(T r, T g, T b) noexcept;
 	
 	// * OPERATORS ****************** //
-	CONSTEXPR Color			&operator=(Color const &rhs) noexcept;
-	CONSTEXPR Color			&operator=(AssortedTuple3 const &rhs) noexcept;
-	CONSTEXPR T				&operator[](size_t i) noexcept;
-	CONSTEXPR T const		&operator[](size_t i) const noexcept;
+	CONSTEXPR Color		&operator=(Color const &rhs) noexcept;
+	CONSTEXPR Color		&operator=(AssortedTuple3 const &rhs) noexcept;
+	CONSTEXPR T			&operator[](size_t i) noexcept;
+	CONSTEXPR T const	&operator[](size_t i) const noexcept;
 # define DECLARE_OPERATOR(OP)												\
-	CONSTEXPR Color		&operator CAT_EQ_OP(OP)(Color const &rhs) noexcept;	\
-	CONSTEXPR Color		&operator CAT_EQ_OP(OP)(T v) noexcept;				\
-	CONSTEXPR Color		operator OP(Color const &rhs) const noexcept;		\
-	CONSTEXPR Color		operator OP(T v) const noexcept;
+	template <typename T2 = T>												\
+	CONSTEXPR Color		&operator CAT_EQ_OP(OP)(T2 v);						\
+	template <typename T2 = T>												\
+	CONSTEXPR Color		operator OP(Color<T2> const &rhs) const;			\
+	template <typename T2 = T>												\
+	CONSTEXPR Color		operator OP(T2 v) const;							\
+	template <typename T2 = T>												\
+	CONSTEXPR Color		&operator CAT_EQ_OP(OP)(Color<T2> const &rhs);
+	
 	DECLARE_OPERATOR(+)
 	DECLARE_OPERATOR(-)
 	DECLARE_OPERATOR(*)
 	DECLARE_OPERATOR(/)
 # undef DECLARE_OPERATOR
-	CONSTEXPR explicit operator AssortedTuple3() const noexcept;
+	CONSTEXPR explicit	operator AssortedTuple3() const noexcept;
 private:
-	// * ATTRIBUTES ***************** //
-	T						r;
-	T						g;
-	T						b;
-	
 	// * STATICS ******************** //
 	static constexpr T					defValue{static_cast<T>(0)};
-	static constexpr T					minval{static_cast<T>(0)};
-	static constexpr T					maxval{static_cast<T>(MAXVAL)};
 	static constexpr AttributePointer	attributes[]{
 		&Color::r,
 		&Color::g,
 		&Color::b
 	};
-	static constexpr T					bounds(T v);
-	static constexpr T					lowerBound(T v);
-	static constexpr T					upperBound(T v);
 };
 										
 template <typename T, unsigned int MAXVAL>
 std::ostream				&operator<<(std::ostream &o,
-										Color<T, MAXVAL> const &rhs);
-										
-										
+										Color<T> const &rhs);
+
 # include "Color.tpp"
 # undef CAT_EQ_OP
 # undef CONSTEXPR

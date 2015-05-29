@@ -1,7 +1,7 @@
 
-#define SPEC VtsColor<NVts, TVts, SVts, Tco, MAXVALco>
+#define SPEC VtsColor<NVts, TVts, SVts, Tco>
 #define TEMPLATE_ARGS size_t NVts, typename TVts, size_t SVts, \
-	typename Tco, unsigned int MAXVALco
+	typename Tco
 
 // * STATICS **************************************************************** //
 // * CONSTRUCTORS *********************************************************** //
