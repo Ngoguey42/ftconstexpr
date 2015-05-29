@@ -52,7 +52,7 @@ private:
 	size_t						_lastIndex;
 };
 
-#include "Array.class.tpp"
+#include "Array.tpp"
 };
 
 #endif // *************************************** ARRAY_CLASS_HPP //

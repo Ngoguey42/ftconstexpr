@@ -39,10 +39,11 @@ public:
 	CONSTEXPR Vertex		&operator=(AssortedTuple3 const &rhs) noexcept;
 	CONSTEXPR T				&operator[](size_t i) noexcept;
 	CONSTEXPR T const		&operator[](size_t i) const noexcept;
-# define DECLARE_OPERATOR(OP)												\
-	CONSTEXPR Vertex		&operator CAT_EQ_OP(OP)(						\
-												Vertex const &rhs) noexcept;\
-	CONSTEXPR Vertex		operator OP(T v) const noexcept;
+# define DECLARE_OPERATOR(OP)											\
+	CONSTEXPR Vertex		&operator CAT_EQ_OP(OP)(Vertex const &rhs);	\
+	CONSTEXPR Vertex		operator OP(T v) const;						\
+	CONSTEXPR Vertex		&operator CAT_EQ_OP(OP)(T v);				\
+	CONSTEXPR Vertex		operator OP(Vertex const &rhs) const;
 	DECLARE_OPERATOR(+)
 	DECLARE_OPERATOR(-)
 	DECLARE_OPERATOR(*)

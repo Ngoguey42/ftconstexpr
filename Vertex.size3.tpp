@@ -124,21 +124,36 @@ DEFINE_OPERATOR(const)
 #undef DEFINE_OPERATOR
 
 // * . and .= OPERATORS ************* //
-#define DEFINE_OPERATOR(OP)													\
-template <typename T>														\
-CONSTEXPR SPEC		&SPEC::operator CAT_EQ_OP(OP)(SPEC const &rhs) noexcept \
-{																			\
-	x CAT_EQ_OP(OP) rhs.x;													\
-	y CAT_EQ_OP(OP) rhs.y;													\
-	z CAT_EQ_OP(OP) rhs.z;													\
-	return *this;															\
-}																			\
-																			\
-template <typename T>														\
-CONSTEXPR SPEC		SPEC::operator OP(T v) const noexcept					\
-{																			\
-	return SPEC(x OP v, y OP v, z OP v);									\
-}
+#define DEFINE_OPERATOR(OP)												\
+	template <typename T>												\
+	CONSTEXPR SPEC		&SPEC::operator CAT_EQ_OP(OP)(SPEC const &rhs)	\
+	{																	\
+		x CAT_EQ_OP(OP) rhs.x;											\
+		y CAT_EQ_OP(OP) rhs.y;											\
+		z CAT_EQ_OP(OP) rhs.z;											\
+		return *this;													\
+	}																	\
+																		\
+	template <typename T>												\
+	CONSTEXPR SPEC		&SPEC::operator CAT_EQ_OP(OP)(T v)				\
+	{																	\
+		x CAT_EQ_OP(OP) v;												\
+		y CAT_EQ_OP(OP) v;												\
+		z CAT_EQ_OP(OP) v;												\
+		return *this;													\
+	}																	\
+																		\
+	template <typename T>												\
+	CONSTEXPR SPEC		SPEC::operator OP(SPEC const &rhs) const		\
+	{																	\
+		return SPEC(x OP rhs.x, y OP rhs.y, z OP rhs.z);				\
+	}																	\
+																		\
+	template <typename T>												\
+	CONSTEXPR SPEC		SPEC::operator OP(T v) const					\
+	{																	\
+		return SPEC(x OP v, y OP v, z OP v);							\
+	}
 DEFINE_OPERATOR(+)
 DEFINE_OPERATOR(-)
 DEFINE_OPERATOR(*)

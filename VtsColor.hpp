@@ -8,10 +8,11 @@
 # include <type_traits>
 # include <stdexcept>
 
-namespace ftce
-{
 # include "Vertex.hpp"
 # include "Color.hpp"
+
+namespace ftce
+{
 
 # define CONSTEXPR constexpr
 // # define CONSTEXPR 
@@ -33,8 +34,8 @@ private:
 	
 public:
 	// * NESTED OBJECTS ************* //
-	typedef ftce::Vertex<TVts, SVts>			Vertex;
-	typedef ftce::Color<Tco>			Color;
+	typedef ftce::Vertex<TVts, SVts>						Vertex;
+	typedef ftce::Color<Tco>								Color;
 
 	// * ATTRIBUTES ***************** //
 	Color											c;
