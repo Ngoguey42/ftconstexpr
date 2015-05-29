@@ -8,6 +8,9 @@
 # include <type_traits>
 # include <stdexcept>
 
+namespace ftce
+{
+
 # define CONSTEXPR constexpr
 // # define CONSTEXPR 
 # define CAT_EQ_OP(OP) OP ## =
@@ -81,5 +84,7 @@ std::ostream				&operator<<(std::ostream &o,
 # include "Color.tpp"
 # undef CAT_EQ_OP
 # undef CONSTEXPR
+
+};	// ftce (ftconstexpr)
 
 #endif

@@ -7,6 +7,8 @@
 # include <iomanip>
 // # define DO_CONSTEXPR constexpr
 
+namespace ftce
+{
 # ifdef DO_CONSTEXPR //don't touch
 #  define DO_AND_PRINT(ARG) ARG
 #  define SHOW(V)	
@@ -121,4 +123,5 @@ void		testVtsColor(void)
 # undef TYPE
 # undef P
 
+};	// ftce (ftconstexpr)
 #endif

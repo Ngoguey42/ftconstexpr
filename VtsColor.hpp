@@ -8,10 +8,12 @@
 # include <type_traits>
 # include <stdexcept>
 
-#include "Vertex.hpp"
-#include "Color.hpp"
+namespace ftce
+{
+# include "Vertex.hpp"
+# include "Color.hpp"
 
-#define CONSTEXPR constexpr
+# define CONSTEXPR constexpr
 // # define CONSTEXPR 
 
 template <size_t NVts, typename TVts = float, size_t SVts = 3u,
@@ -36,8 +38,8 @@ private:
 	
 public:
 	// * NESTED OBJECTS ************* //
-	typedef /*ftce::*/Vertex<TVts, SVts>			Vertex;
-	typedef /*ftce::*/Color<Tco, MAXVALco>			Color;
+	typedef ftce::Vertex<TVts, SVts>			Vertex;
+	typedef ftce::Color<Tco, MAXVALco>			Color;
 
 	// * ATTRIBUTES ***************** //
 	Color											c;
@@ -70,4 +72,5 @@ private:
 // # include "VtsColor.size1.hpp"
 # undef CONSTEXPR
 
+};	// ftce (ftconstexpr)
 #endif // ****************************************** FTCONSTEXPR_VTSCOLOR_HPP //

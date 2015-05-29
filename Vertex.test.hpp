@@ -5,7 +5,8 @@
 // #include "Vertex.size3.hpp"
 #include "Vertex.hpp"
 
-
+namespace ftce
+{
 // # define DO_CONSTEXPR constexpr
 
 # ifdef DO_CONSTEXPR //don't touch
@@ -117,5 +118,7 @@ void		testVertex(void)
 # undef KEYWORD
 # undef VALUE_TYPE
 # undef TYPE
+
+};	// ftce (ftconstexpr)
 
 #endif

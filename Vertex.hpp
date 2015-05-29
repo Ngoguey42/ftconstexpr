@@ -8,7 +8,9 @@
 # include <type_traits>
 # include <stdexcept>
 
-#define CONSTEXPR constexpr
+namespace ftce
+{
+# define CONSTEXPR constexpr
 // # define CONSTEXPR 
 
 template <typename T = float, size_t S = 3u>
@@ -24,4 +26,5 @@ class Vertex
 # include "Vertex.size2.hpp"
 # undef CONSTEXPR
 
+};	// ftce (ftconstexpr)
 #endif // ******************************************** FTCONSTEXPR_VERTEX_HPP //

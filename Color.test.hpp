@@ -6,6 +6,9 @@
 # include <assert.h>
 // # define DO_CONSTEXPR constexpr
 
+namespace ftce
+{
+
 # ifdef DO_CONSTEXPR //don't touch
 #  define DO_AND_PRINT(ARG) ARG
 #  define SHOW(V)	
@@ -154,5 +157,7 @@ void		testColor(void)
 # undef VALUE_TYPE
 # undef TYPE
 # undef P
+
+};	// ftce (ftconstexpr)
 
 #endif
