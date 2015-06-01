@@ -1,3 +1,14 @@
+// ************************************************************************** //
+//                                                                            //
+//                                                        :::      ::::::::   //
+//   Vertex.size2.hpp                                   :+:      :+:    :+:   //
+//                                                    +:+ +:+         +:+     //
+//   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
+//                                                +#+#+#+#+#+   +#+           //
+//   Created: 2015/06/01 16:00:46 by ngoguey           #+#    #+#             //
+//   Updated: 2015/06/01 16:00:59 by ngoguey          ###   ########.fr       //
+//                                                                            //
+// ************************************************************************** //
 
 #ifndef FTCONSTEXPR_VERTEX_SIZE2_HPP
 # define FTCONSTEXPR_VERTEX_SIZE2_HPP
@@ -24,6 +35,7 @@ public:
 	CONSTEXPR Vertex(std::initializer_list<T> l) noexcept;
 	CONSTEXPR Vertex(AssortedTuple2 const &t) noexcept;
 	CONSTEXPR Vertex(T x, T y) noexcept;
+	~Vertex() = default;
 	
 	// * MEMBER FUNCTIONS / METHODS * //
 	CONSTEXPR Vertex		&set(T x, T y) noexcept;

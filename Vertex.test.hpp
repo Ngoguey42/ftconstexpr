@@ -1,3 +1,14 @@
+// ************************************************************************** //
+//                                                                            //
+//                                                        :::      ::::::::   //
+//   Vertex.test.hpp                                    :+:      :+:    :+:   //
+//                                                    +:+ +:+         +:+     //
+//   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
+//                                                +#+#+#+#+#+   +#+           //
+//   Created: 2015/06/01 15:57:56 by ngoguey           #+#    #+#             //
+//   Updated: 2015/06/01 15:57:59 by ngoguey          ###   ########.fr       //
+//                                                                            //
+// ************************************************************************** //
 
 #ifndef FTCONSTEXPR_VERTEX_TEST_HPP
 # define FTCONSTEXPR_VERTEX_TEST_HPP
@@ -7,7 +18,7 @@
 
 namespace ftce
 {
-// # define DO_CONSTEXPR constexpr
+# define DO_CONSTEXPR constexpr
 
 # ifdef DO_CONSTEXPR //don't touch
 #  define DO_AND_PRINT(ARG) ARG

@@ -6,7 +6,7 @@
 //   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2015/05/29 13:44:41 by ngoguey           #+#    #+#             //
-//   Updated: 2015/05/29 14:54:31 by ngoguey          ###   ########.fr       //
+//   Updated: 2015/06/01 15:59:56 by ngoguey          ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -46,6 +46,7 @@ public:
 	CONSTEXPR Color(std::initializer_list<T> l) noexcept;
 	CONSTEXPR Color(AssortedTuple3 const &t) noexcept;
 	CONSTEXPR Color(T r, T g, T b) noexcept;
+	~Color() = default;
 	
 	// * MEMBER FUNCTIONS / METHODS * //
 	CONSTEXPR Color		&set(T r, T g, T b) noexcept;

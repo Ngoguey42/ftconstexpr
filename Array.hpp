@@ -1,3 +1,14 @@
+// ************************************************************************** //
+//                                                                            //
+//                                                        :::      ::::::::   //
+//   Array.hpp                                          :+:      :+:    :+:   //
+//                                                    +:+ +:+         +:+     //
+//   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
+//                                                +#+#+#+#+#+   +#+           //
+//   Created: 2015/06/01 15:50:53 by ngoguey           #+#    #+#             //
+//   Updated: 2015/06/01 15:59:26 by ngoguey          ###   ########.fr       //
+//                                                                            //
+// ************************************************************************** //
 
 #ifndef ARRAY_CLASS_HPP
 # define ARRAY_CLASS_HPP
@@ -10,7 +21,6 @@ template<typename T, size_t S>
 class Array
 {
 public:
-
 	// * NESTED OBJECTS ************* //
 	class iterator
 	{
@@ -33,6 +43,7 @@ public:
 	// * CTORS / DTORS ************** //
 	constexpr Array();
 	constexpr Array(Array const &src);
+	~Array() = default;
 	
 	// * OPERATORS ****************** //
 	constexpr Array				&operator=(Array const &rhs);

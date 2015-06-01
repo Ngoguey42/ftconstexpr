@@ -1,3 +1,14 @@
+// ************************************************************************** //
+//                                                                            //
+//                                                        :::      ::::::::   //
+//   VtsColor.test.hpp                                  :+:      :+:    :+:   //
+//                                                    +:+ +:+         +:+     //
+//   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
+//                                                +#+#+#+#+#+   +#+           //
+//   Created: 2015/06/01 15:57:51 by ngoguey           #+#    #+#             //
+//   Updated: 2015/06/01 15:57:51 by ngoguey          ###   ########.fr       //
+//                                                                            //
+// ************************************************************************** //
 
 #ifndef FTCONSTEXPR_VTSCOLOR_TEST_HPP
 # define FTCONSTEXPR_VTSCOLOR_TEST_HPP
@@ -5,7 +16,7 @@
 # include "VtsColor.hpp"
 # include <assert.h>
 # include <iomanip>
-// # define DO_CONSTEXPR constexpr
+# define DO_CONSTEXPR constexpr
 
 namespace ftce
 {
@@ -80,12 +91,12 @@ KEYWORD int	testcVtsColor(void)
 			   v3.v[0].x == 1.12f && v3.v[0].y == 2.12f && v3.v[0].z == 3.12f &&
 			   v3.v[1].x == 10.12f && v3.v[1].y == 20.12f && v3.v[1].z == 30.12f);
 		P("OK\n");
-		P("copy CTOR: ");
+/*		P("copy CTOR: ");
 		TYPE const		v7(v0);
 		assert(v7.c[0] == 5u && v7.c[1] == 6u && v7.c[2] == 7u &&
 			   v7.v[0].x == 1.f && v7.v[0].y == 2.f && v7.v[0].z == 3.f &&
 			   v7.v[1].x == 10.f && v7.v[1].y == 20.f && v7.v[1].z == 30.f);
-		P("OK\n");
+			   P("OK\n");*/
 		TYPE			v4;
 		P("operator=(VtsColor): ");
 		v4 = v1;
@@ -97,7 +108,7 @@ KEYWORD int	testcVtsColor(void)
 		assert(v4[0].x == 1.42f && v4[1].y == 20.42f);
 		P("OK\n");
 		P("operator[] const: ");
-		assert(v7[0].x == 1.f && v7[1].y == 20.f);
+		assert(v0[0].x == 1.f && v0[1].y == 20.f);
 		P("OK\n");
 	}
 	return (0);

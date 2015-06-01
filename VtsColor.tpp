@@ -1,3 +1,14 @@
+// ************************************************************************** //
+//                                                                            //
+//                                                        :::      ::::::::   //
+//   VtsColor.tpp                                       :+:      :+:    :+:   //
+//                                                    +:+ +:+         +:+     //
+//   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
+//                                                +#+#+#+#+#+   +#+           //
+//   Created: 2015/06/01 15:57:38 by ngoguey           #+#    #+#             //
+//   Updated: 2015/06/01 15:57:40 by ngoguey          ###   ########.fr       //
+//                                                                            //
+// ************************************************************************** //
 
 #define SPEC VtsColor<NVts, TVts, SVts, Tco>
 #define TEMPLATE_ARGS size_t NVts, typename TVts, size_t SVts, \

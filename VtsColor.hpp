@@ -1,3 +1,14 @@
+// ************************************************************************** //
+//                                                                            //
+//                                                        :::      ::::::::   //
+//   VtsColor.hpp                                       :+:      :+:    :+:   //
+//                                                    +:+ +:+         +:+     //
+//   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
+//                                                +#+#+#+#+#+   +#+           //
+//   Created: 2015/06/01 15:57:29 by ngoguey           #+#    #+#             //
+//   Updated: 2015/06/01 15:57:29 by ngoguey          ###   ########.fr       //
+//                                                                            //
+// ************************************************************************** //
 
 #ifndef FTCONSTEXPR_VTSCOLOR_HPP
 # define FTCONSTEXPR_VTSCOLOR_HPP
@@ -44,6 +55,8 @@ public:
 	// * CTORS / DTORS ************** //
 	CONSTEXPR VtsColor() noexcept;
 	CONSTEXPR VtsColor(VtsColor const &src) noexcept;
+	~VtsColor() = default;
+	
 	// * COLOR CTORS ****** //
 	CONSTEXPR VtsColor(Color const &c) noexcept;
 	CONSTEXPR VtsColor(Tco r, Tco g, Tco b) noexcept;

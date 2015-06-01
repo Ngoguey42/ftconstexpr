@@ -1,10 +1,21 @@
+// ************************************************************************** //
+//                                                                            //
+//                                                        :::      ::::::::   //
+//   Color.test.hpp                                     :+:      :+:    :+:   //
+//                                                    +:+ +:+         +:+     //
+//   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
+//                                                +#+#+#+#+#+   +#+           //
+//   Created: 2015/06/01 15:58:03 by ngoguey           #+#    #+#             //
+//   Updated: 2015/06/01 15:58:55 by ngoguey          ###   ########.fr       //
+//                                                                            //
+// ************************************************************************** //
 
 #ifndef FTCONSTEXPR_COLOR_TEST_HPP
 # define FTCONSTEXPR_COLOR_TEST_HPP
 
 # include "Color.hpp"
 # include <assert.h>
-// # define DO_CONSTEXPR constexpr
+# define DO_CONSTEXPR constexpr
 
 namespace ftce
 {
@@ -17,8 +28,8 @@ namespace ftce
 #  define P(VAL)
 # else
 	
-#  define DO_AND_PRINT(ARG)												\
-	std::cout << "\033[35m" << #ARG << "\033[0m" << std::endl;			\
+#  define DO_AND_PRINT(ARG)										\
+	std::cout << "\033[35m" << #ARG << "\033[0m" << std::endl;	\
 	ARG																	
 #  define SHOW(V)	std::cout << #V << ": " << V << "\n";
 #  define ENDL	std::cout << "\n";
@@ -81,8 +92,8 @@ static KEYWORD int	testcColor(void)
 		P("OK\n");
 		v1.set(100, 200, 250);
 		P("operator typecast(tuple): ");
-		t1 = static_cast<TUPLET>(v1);
-		assert(std::get<0>(t1) == 100 && std::get<1>(t1) == 200 && std::get<2>(t1) == 250);
+		TUPLET t2(static_cast<TUPLET>(v1));
+		assert(std::get<0>(t2) == 100 && std::get<1>(t2) == 200 && std::get<2>(t2) == 250);
 		P("OK\n");
 	}
 	{
@@ -130,7 +141,7 @@ static KEYWORD int	testcColor(void)
 		P("OK\n");
 	}
 	ENDL
-	return (0);
+		return (0);
 }
 
 

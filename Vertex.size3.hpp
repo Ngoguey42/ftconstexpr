@@ -1,3 +1,14 @@
+// ************************************************************************** //
+//                                                                            //
+//                                                        :::      ::::::::   //
+//   Vertex.size3.hpp                                   :+:      :+:    :+:   //
+//                                                    +:+ +:+         +:+     //
+//   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        //
+//                                                +#+#+#+#+#+   +#+           //
+//   Created: 2015/06/01 16:01:20 by ngoguey           #+#    #+#             //
+//   Updated: 2015/06/01 16:01:27 by ngoguey          ###   ########.fr       //
+//                                                                            //
+// ************************************************************************** //
 
 #ifndef FTCONSTEXPR_VERTEX_SIZE3_HPP
 # define FTCONSTEXPR_VERTEX_SIZE3_HPP
@@ -28,6 +39,7 @@ public:
 	CONSTEXPR Vertex(AssortedTuple3 const &t) noexcept;
 	CONSTEXPR Vertex(T x, T y) noexcept;
 	CONSTEXPR Vertex(T x, T y, T z) noexcept;
+	~Vertex() = default;
 	
 	// * MEMBER FUNCTIONS / METHODS * //
 	CONSTEXPR Vertex		&set(T x, T y) noexcept;
